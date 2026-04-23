@@ -1,5 +1,41 @@
+# Python cache
 *.pyc
+*.pyo
+*.pyd
 __pycache__/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+*/.venv/
+venv/
+*/venv/
+
+# Environment files
 .env
+.env.*
+*.env
+
+# Models & weights
 models/
 weights/
+
+# Logs
+logs/
+*.log
+
+# Editor junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Node (if any)
+node_modules/
+
+# Service outputs
+stt/output/
+tts/output/
+pso-bot-client/output/
