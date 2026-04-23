@@ -20,3 +20,5 @@ Architecture:
 
 
 TODO: add docker files to each service along with the scripts to run said service.
+
+#small comment just for a commit. Project structure feels nice and clean great skeleton for starting
