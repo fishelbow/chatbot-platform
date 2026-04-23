@@ -1,0 +1,15 @@
+services:
+  core-engine:
+    build: ./core-engine
+    container_name: core-engine
+    ports: 
+     - "8000:8000"
+
+  stt: 
+    build: ./stt
+
+  tts: 
+    build: ./tts
+
+  pso-bot-client:
+    build: ./pso-bot-client 
