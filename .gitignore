@@ -1,45 +1,31 @@
-# Python cache
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
-*.egg-info/
-dist/
-build/
-
-# Virtual environments
+# Python (Global & Local)
+**/__pycache__/
+*.py[cod]
+*$py.class
 .venv/
-*/.venv/
 venv/
-*/venv/
+ENV/
 
-# Environment files
+# Docker
+.dockerignore
+# Do NOT ignore Dockerfiles, but you can ignore local data volumes
+docker-data/
+
+# Databases
+*.sqlite3
+pgdata/      # If you map your Postgres volume to a local folder
+
+# Environments & Secrets
 .env
 .env.*
-*.env
+secrets.json
 
-# Models & weights
-models/
-weights/
+# Frontend (React)
+frontend/node_modules/
+frontend/build/
+frontend/.pnp
+.eslintcache
 
 # Logs
-logs/
 *.log
-
-# Editor junk
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Node (if any)
-node_modules/
-
-# Service outputs
-stt/output/
-tts/output/
-pso-bot-client/output/
-
-
-# Notes 
-joeNotes.MD
+logs/

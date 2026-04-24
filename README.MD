@@ -1,4 +1,4 @@
-Here we are starting out. to build a chatbot-platfrom.
+Here we are starting out to build a chatbot-platform.
     goals: 
         - operate local LLM: never messed with these.
         - text to speech
@@ -45,53 +45,62 @@ Overview of the platform:
 
         - chat server    -- muble or discord cordinated with this service
 
+        - data layer     -- going with postgreSQL
+
 chatbot-platform/
-│
+├── docker-compose.yml          # The Orchestrator for all containers
+├── .dockerignore               # Vital: Ignore local .venv, __pycache__, and .env
+├── .gitignore                  # updated to reflect Docker
+├── .venv
 ├── api/
+│   ├── Dockerfile              # Service-specific build logic
+│   ├── requirements.txt        # FastAPI, SQLAlchemy, etc.
 │   ├── main.py
-│   ├── routers/
-│   │   ├── bots.py
-│   │   ├── workflows.py
-│   │   ├── pipeline.py
-│   │   └── __init__.py   <-- yes
-│   ├── __init__.py       <-- yes
-│   └── .venv/
-│
+│   └── routers/
+├── chat/                       # NEW GATEWAY SERVICE
+│   ├── Dockerfile
+│   ├── requirements.txt        # Discord.py, etc.
+│   ├── discord_gateway.py
+│   └── mumble_gateway.py
+├── database/                   # SHARED LAYER (Injected into containers via Dockerfile)
+│   ├── __init__.py
+│   ├── base.py
+│   ├── connection.py
+│   ├── models.pyv
+│   ├── crud/
+│   └── migrations/             # Alembic lives here
+├── frontend/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src/
+│   └── public/
 ├── orchestrator/
+│   ├── Dockerfile              # Engine-specific build logic
+│   ├── requirements.txt        # Websockets, special bot libs
 │   ├── app.py
 │   ├── engine/
-│   │   ├── orchestrator.py
-│   │   ├── pipeline.py
-│   │   ├── bot_manager.py
-│   │   └── __init__.py   <-- yes
-│   ├── __init__.py       <-- yes
-│   └── .venv/
-│
-├── bots/
-│   ├── pso_bot.py
-│   ├── __init__.py       <-- optional unless importing
-│   └── .venv/
-│
-├── services/
-│   ├── stt/
-│   │   ├── whisper_service.py
-│   │   └── __init__.py   <-- yes
-│   ├── tts/
-│   │   ├── elevenlabs_service.py
-│   │   └── __init__.py   <-- yes
-│   ├── llm/
-│   │   ├── openai_service.py
-│   │   └── __init__.py   <-- yes
-│   └── __init__.py       <-- yes
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   └── package.json       
-│
-│
-└── chat/                     <-- NEW
-    ├── discord_gateway.py    <-- Discord bot interface
-    ├── mumble_gateway.py     <-- Mumble voice interface
-    ├── __init__.py
-    └── .venv/
+│   └── bots/                   # pso_bot lives here now (moved for context)
+└── services/
+    ├── stt/
+    │   ├── Dockerfile          # Uses a CUDA/PyTorch base image
+    │   ├── requirements.txt    # openai-whisper, torch
+    │   └── whisper_service.py
+    ├── tts/
+    │   ├── Dockerfile          # Uses a slim Python base image
+    │   ├── requirements.txt    # elevenlabs, requests
+    │   └── elevenlabs_service.py
+    └──── llm/
+            ├── openai/
+            │   ├── Dockerfile       # Light: just hits the API
+            │   ├── requirements.txt # openai, pydantic
+            │   └── service.py
+            ├── local_llama/
+            │   ├── Dockerfile       # Heavy: GPU/CUDA based
+            │   ├── requirements.txt # llama-cpp-python or vllm
+            │   └── service.py
+            └── custom_model/
+                ├── Dockerfile
+                ├── requirements.txt
+                └── service.py
+
+
