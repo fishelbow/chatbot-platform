@@ -28,13 +28,13 @@ Overview of the platform:
 
         - models         -- This will contain many local LLMs
 
-        - pso-bot-client -- a bot to login, move, play, chat, etc
+        - bot            -- a bot to login, move, play, chat, etc
 
         - api            -- REST or RPC leaning towards rpc for internal
 
         - frontend/react -- dashboard, cpu , ram, spin up bots
 
-        - chat server    -- muble or discord cordinated with this service
+        - chat server    -- mumble or discord cordinated with this service
 
         - data layer     -- going with postgreSQL
 
