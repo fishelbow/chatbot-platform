@@ -7,8 +7,6 @@ I need to open the command palette crtl + shift + p : search Python: Select Inte
 
 pip freeze > requirements.txt
 
-
-
 a little bit of confusion on .venv with docker
 
 it would appear I will use one .venv for the entire project and a Dockerfile for each service

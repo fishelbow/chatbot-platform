@@ -18,15 +18,6 @@ Architecture:
             this will allow the docker to be pulled and built on site. 
             for development we will use vscode and the requirments.txt that is generated. 
 
-
-TODO: add docker files to each service along with the scripts to run said service.
-
-# small comment just for a commit. Project structure feels nice and clean great skeleton for starting
-
-# will be going with postgreSQL 
-
-# things are shapping up nicely time to define some things
-
 Overview of the platform:
 
         -core-engine     --responsible for orchestration of services
